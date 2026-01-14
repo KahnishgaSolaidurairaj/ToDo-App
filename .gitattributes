@@ -1,0 +1,12 @@
+# Ignore native platform code from GitHub language stats
+ios/** linguist-vendored
+android/** linguist-vendored
+build/** linguist-vendored
+
+# Ignore compiled artifacts
+*.png linguist-vendored
+*.jpg linguist-vendored
+*.svg linguist-vendored
+
+# Only count Dart source files
+lib/** linguist-detectable

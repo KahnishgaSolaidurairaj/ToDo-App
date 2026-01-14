@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_flutter/hive_flutter.dart'; 
 import '../components/todo.dart';
 import '../components/add.dart';
 
-class General extends StatefulWidget {
-  const General({super.key});
+class Academic extends StatefulWidget {
+  const Academic({super.key});
 
   @override
-  State<General> createState() => _GeneralState();
+  State<Academic> createState() => _AcademicState();
 }
 
-class _GeneralState extends State<General> {
+class _AcademicState extends State<Academic> {
   List tasks = [];
   late Box tasksBox;
   final TextEditingController controller = TextEditingController();
@@ -23,13 +23,13 @@ class _GeneralState extends State<General> {
   }
 
   void loadTasks() async {
-    final storedTasks = tasksBox.get('generalTasks', defaultValue: []);
+    final storedTasks = tasksBox.get('schoolTasks', defaultValue: []);
     tasks = List<Map>.from(storedTasks);
     setState(() {});
   }
 
   void saveTasks() {
-    tasksBox.put('generalTasks', tasks);
+    tasksBox.put('schoolTasks', tasks);
   }
 
   void addTask() {

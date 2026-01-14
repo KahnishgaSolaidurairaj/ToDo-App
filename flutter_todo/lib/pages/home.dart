@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/general.dart';
+import '../pages/academic.dart';
+import '../pages/water.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,11 +24,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         title: const Text("To-Do"),
+        bottom: TabBar(
+          controller: tabController,
+          tabs: const [
+            Tab(text: "General"),
+            Tab(text: "Academic"),
+            Tab(text: "Water"),
+          ],
+        ),
       ),
       body: TabBarView(
         controller: tabController,
         children: const [
           General(),
+          Academic(),
+          Water(),
         ],
       ),
     );

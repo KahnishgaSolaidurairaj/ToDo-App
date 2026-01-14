@@ -1,15 +1,15 @@
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:hive/hive.dart';
 
 class ToDoStorage {
+  final String boxName = "tasksBox";
+
   Future<List<dynamic>> loadTasks(String key) async {
-    final prefs = await SharedPreferences.getInstance();
-    String? data = prefs.getString(key);
-    return data == null ? [] : jsonDecode(data);
+    final box = await Hive.openBox(boxName);
+    return box.get(key, defaultValue: []) as List<dynamic>;
   }
 
   Future<void> saveTasks(String key, List tasks) async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString(key, jsonEncode(tasks));
+    final box = await Hive.openBox(boxName);
+    await box.put(key, tasks);
   }
 }
